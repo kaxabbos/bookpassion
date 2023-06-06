@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html class="h-100" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Bookpassion - Главная страница</title>
+    <link rel="stylesheet" href="/static/index_style.css">
+</head>
+
+<head th:insert="blocks\head :: head"></head>
+
+<body class="d-flex flex-column h-100">
+
+<header th:insert="blocks\header :: header" class="sticky-top"></header>
+
+<hr class="clear">
+
+<main class="container-lg">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="pt-5 px-5 mx-auto">
+                <div class="btn-group mt-3">
+                    <a href="/catalog/genre/Бизнес" class="btn btn-outline-info">Бизнес</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="pt-5 px-5 mx-auto">
+                <div class="btn-group mt-3">
+                    <a href="/catalog/genre/Классика" class="btn btn-outline-info">Классика</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="pt-5 px-5 mx-auto">
+                <div class="btn-group mt-3">
+                    <a href="/catalog/genre/Ужастики" class="btn btn-outline-info">Романы</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="pt-5 px-5 mx-auto">
+                <div class="btn-group mt-3">
+                    <a href="/catalog/genre/Саморазвитие" class="btn btn-outline-info">Саморазвитие</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="pt-5 px-5 mx-auto">
+                <div class="btn-group mt-3">
+                    <a href="/catalog/genre/Боевики" class="btn btn-outline-info">Боевики</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pt-5"></div>
+</main>
+
+<hr class="clear">
+
+<footer th:insert="blocks/footer :: footer" class="footer mt-auto py-1 bg-info"></footer>
+
+</body>
+
+</html>

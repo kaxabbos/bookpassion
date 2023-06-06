@@ -1,0 +1,37 @@
+<div th:fragment="header">
+    <header class="p-2 bg-info text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" class="nav-link px-2 text-white"><em>Главная</em></a></li>
+                    <li><a href="/catalog/all" class="nav-link px-2 text-white"><em>Библиотека книг</em></a></li>
+                    <li><a href="/authors" class="nav-link px-2 text-white"><em>Информация о писателях</em></a></li>
+                    <li><a href="/about" class="nav-link px-2 text-white"><em>О нас</em></a></li>
+
+                    <li th:if="${role == 'ADMIN' || role == 'PUB'}">
+                        <a href="/author/add" class="nav-link px-2 text-white"><em>Внести информацию о писателе</em></a>
+                    </li>
+                    <li th:if="${role == 'USER' || role == 'PUB'}">
+                        <a href="/cart" class="nav-link px-2 text-white"><em>Корзина</em></a>
+                    </li>
+                </ul>
+                <form th:if="${role != 'NOT'}" action="/catalog/search" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+                      method="post">
+                    <input type="search" name="search" class="form-control form-control-dark" placeholder="Поиск...">
+                </form>
+                <div class="text-end">
+                    <a th:if="${role == 'NOT'}" href="/login" type="button"
+                       class="btn btn-outline-light me-2"><em>Войти</em></a>
+                    <a th:if="${role != 'NOT' && role != 'USER'}" href="/sales" type="button"
+                       class="btn btn-outline-light me-2">Данные о деятельности</a>
+                    <a th:if="${role == 'ADMIN'}" href="/userList" type="button" class="btn btn-outline-light me-2"><em>Пользователи</em></a>
+                    <a th:if="${role == 'NOT'}" href="/reg" type="button"
+                       class="btn btn-warning"><em>Регистрация</em></a>
+                    <form th:if="${role != 'NOT'}" class="btn" action="/logout" method="post">
+                        <button class="btn btn-warning"><em>Выйти</em></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>

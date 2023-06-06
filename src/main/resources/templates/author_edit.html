@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html class="h-100" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Bookpassion - Редактирование информацию о писателе</title>
+    <link rel="stylesheet" href="/static/book_add_edit_style.css">
+</head>
+
+<head th:insert="blocks\head :: head"></head>
+
+<body class="d-flex flex-column h-100" style="">
+
+<header th:insert="blocks\header :: header" class="sticky-top" role="navigation"></header>
+
+<hr class="clear">
+
+<main th:each="author : ${authors}" class="container-lg flex-shrink-0 bg-light">
+    <form th:action="'/author/' + ${author.id} + '/edit/'" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-lg-12 input-group flex-nowrap size-150">
+                <label for="name" class="input-group-text">Имя</label>
+                <input id="name" name="name" type="text" class="form-control" placeholder="Имя"
+                       required th:value="${author.name}">
+            </div>
+            <div class="col-lg-6 size-150">
+                <div class="input-group">
+                    <label for="poster" class="input-group-text">Фотография</label>
+                    <input id="poster" name="poster" type="file" class="form-control"
+                           accept=".jpg,.jpeg,.png" required>
+                </div>
+            </div>
+            <div class="col-lg-6 size-150">
+                <div class=" input-group">
+                    <label for="birthday" class="input-group-text">Рождение</label>
+                    <input id="birthday" name="birthday" min="0" max="2025" type="number" maxlength="4"
+                           class="form-control" placeholder="Рождение" required th:value="${author.birthday}">
+                </div>
+                <div class=" input-group">
+                    <label for="die" class="input-group-text">Смерть</label>
+                    <input id="die" name="die" min="0" max="2025" type="number" maxlength="4"
+                           class="form-control" placeholder="Смерть" required th:value="${author.die}">
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <h4><label for="description">Информация о писателе</label></h4>
+                <textarea class="form-control" name="description" id="description" required
+                          th:value="${author.description}"></textarea>
+            </div>
+        </div>
+        <button class="btn btn-lg btn-info" type="submit">Обновить</button>
+        <a class="btn btn-lg btn-info" href="/authors">Отмена</a>
+    </form>
+    <div class="pt-3"></div>
+</main>
+
+<hr class="clear">
+
+<footer th:insert="blocks/footer :: footer" class="footer mt-auto py-1 bg-info"></footer>
+
+</body>
+
+</html>
